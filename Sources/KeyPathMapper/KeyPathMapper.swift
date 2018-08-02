@@ -6,6 +6,8 @@ public struct KeyPathMapper<TypeA, TypeB> {
     public typealias KeyPathA<TypeAProperty> = WritableKeyPath<TypeA, TypeAProperty>
     public typealias KeyPathB<TypeBProperty> = WritableKeyPath<TypeB, TypeBProperty>
     
+    public init() {}
+    
     // MARK: - Transformer map
     
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ aKeyPath: KeyPathA<TypeAProperty>,
