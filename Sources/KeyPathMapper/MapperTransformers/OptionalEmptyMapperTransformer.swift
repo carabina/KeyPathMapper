@@ -1,6 +1,6 @@
 import Foundation
 
-public struct OptionalEmptyMapperTransformer<MappingType>: MapperTransfomer {
+struct OptionalEmptyMapperTransformer<MappingType>: MapperTransfomer {
     public typealias TypeA = MappingType
     public typealias TypeB = Optional<MappingType>
     

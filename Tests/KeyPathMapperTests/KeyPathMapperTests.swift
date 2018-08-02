@@ -21,12 +21,20 @@ struct TypeBSubmodel {
     var value: String = ""
 }
 
+extension TypeA: MappableInitializable {
+    init() {
+        self.name = ""
+        self.age = 0
+        self.submodel = TypeASubmodel(value: "")
+    }
+}
+
 final class KeyPathMapperTests: XCTestCase {
     
     var mapper: KeyPathMapper<TypeA, TypeB> {
         var mapper = KeyPathMapper<TypeA, TypeB>()
         mapper.map(\TypeA.name, to: \TypeB.name)
-        mapper.map(\TypeA.age, to: \TypeB.age, with: OptionalEmptyMapperTransformer(fallbackValue: 0))
+        mapper.map(\TypeA.age, to: \TypeB.age, fallbackValue: 0)
         
         var submodelMapper = KeyPathMapper<TypeASubmodel, TypeBSubmodel>()
         submodelMapper.map(\TypeASubmodel.value, to: \TypeBSubmodel.value)
@@ -56,6 +64,16 @@ final class KeyPathMapperTests: XCTestCase {
         XCTAssertEqual(updated.name, a.name)
         XCTAssertEqual(updated.age, a.age)
         XCTAssertEqual(updated.submodel.value, a.submodel.value)
+    }
+    
+    func testConvert_B_to_A() {
+        let b = TypeB(name: "TypeB", age: nil, submodel: TypeBSubmodel(value: "TypeBSubmodel"))
+        
+        let updated: TypeA = mapper.convert(from: b)
+        
+        XCTAssertEqual(updated.name, b.name)
+        XCTAssertEqual(updated.age, 0)
+        XCTAssertEqual(updated.submodel.value, b.submodel.value)
     }
 
     static var allTests = [
