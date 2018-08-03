@@ -3,7 +3,7 @@
 
 ## How to use?
 
-```
+```swift
 struct TypeA {
     var name: String
     var age: Int
