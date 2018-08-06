@@ -1,9 +1,13 @@
 # KeyPathMapper
-**KeyPathMapper** is a thin library based on swift `#KeyPath` feature, it allows mapping between two different models.
+
+**KeyPathMapper** is a thin library based on swift `#KeyPath` feature which facilitates mapping between two different models.
+
 
 ## How to use?
 
 ```swift
+// MARK: - Models
+
 struct TypeA {
     var name: String
     var age: Int
@@ -24,10 +28,12 @@ struct TypeBSubmodel {
     var value: String = ""
 }
 
+// MARK: - Mapper generation
+
 var mapper: KeyPathMapper<TypeA, TypeB> {
         var mapper = KeyPathMapper<TypeA, TypeB>()
         mapper.map(\TypeA.name, to: \TypeB.name)
-        mapper.map(\TypeA.age, to: \TypeB.age, with: OptionalEmptyMapperTransformer(fallbackValue: 999))
+        mapper.map(\TypeA.age, to: \TypeB.age, fallbackValue: 0)
         
         var submodelMapper = KeyPathMapper<TypeASubmodel, TypeBSubmodel>()
         submodelMapper.map(\TypeASubmodel.value, to: \TypeBSubmodel.value)
@@ -35,6 +41,8 @@ var mapper: KeyPathMapper<TypeA, TypeB> {
         
         return mapper
     }
+
+// MARK: - Use of mapper
 
 var a = TypeA(name: "TypeA", age: 20, submodel: TypeASubmodel(value: "TypeASubmodel"))
 Var b = TypeB(name: "TypeB", age: nil, submodel: TypeBSubmodel(value: "TypeBSubmodel"))
@@ -46,46 +54,60 @@ mapper.update(value: &a, from: b)
 ```
 
 
-### KeyPathMapper
+## KeyPathMapper
 **KeyPathMapper** represent a base class for mapping two models.
 
 **Initialisation:**
+```swift 
+KeyPathMapper<TypeA, TypeB>()
+```
 
-`KeyPathMapper<TypeA, TypeB>()`
+#### Add mapping:
 
-**Add mapping:**
 - If it’s mapping same type then you can avoid `transformer` part
 
- ```
- mapper.map(\TypeA.name, to: \TypeB.name)
- ```
-
-- If it’s mapping same type, but one of them is optional you can use `OptionalEmptyMapperTransformer` by providing default value
-
-```
-mapper.map(\TypeA.age, to: \TypeB.age, with: OptionalEmptyMapperTransformer(fallbackValue: 999))
+```swift 
+mapper.map(\TypeA.name, to: \TypeB.name)
 ```
 
-- In case you are sure you that value exist and don’t want to use `OptionalEmptyMapperTransformer` you can force unwrap KeyPath\
-
+- If it’s mapping same type, but one of them is optional library is providing a simplified mapping function. Fallback value is used when you try to map `nil` to non optional value.
+```swift
+mapper.map(\TypeA.age, to: \TypeB.age, fallbackValue: 0)
 ```
+
+- In case you are sure that value will exist at time of mapping you can force unwrap KeyPath
+```swift
 mapper.map(\TypeA.age, to: \TypeB.age!)
 ```
 
-- If you have nested subtype, you can use `NestedMapperTransformer` with their own `TypeASubmodel.value`  
-
-```
+- If you have nested subtype, you can use `NestedMapperTransformer` with their own `KeyPathMapper`
+```swift
 var submodelMapper = KeyPathMapper<TypeASubmodel, TypeBSubmodel>()
 submodelMapper.map(\TypeASubmodel.value, to: \TypeBSubmodel.value)
 mapper.map(\TypeA.submodel, to: \TypeB.submodel, with: NestedMapperTransformer(keyPathMapper: submodelMapper))
 ```
 
-### MapperTransfomer
+#### Conversion:
+
+Sometimes you may want to initialise a model from another one, through `KeyPathMapper`. You can do that by making your model conform to `MappableInitializable`, then you can use:
+```swift
+let updated: TypeA = mapper.convert(from: b)
+```
+
+#### Observing:
+
+You can observe `KeyPath` change and map it into another model whenever new value is set. This functionality is provided only if observed object is instance of `NSObject` and observing model is a reference type.
+```swift
+mapper.observe(object: d, mapInto: c)
+```
+
+## MapperTransfomer
+
 **MapperTransfomer** are transforming value on mapping. You can create your own transformations by creating a type which conforms to  **MapperTransfomer**.
 
 Example transforming Int to String and vice versa will look like:
 
-```
+```swift
 public struct IntStringMapperTransformer: MapperTransfomer {
     public typealias TypeA = Int
     public typealias TypeB = String
@@ -99,4 +121,3 @@ public struct IntStringMapperTransformer: MapperTransfomer {
     }
 }
 ```
-
