@@ -1,7 +1,7 @@
-import Foundation
+        import Foundation
 
 public struct KeyPathMapper<TypeA, TypeB> {
-    private var mappingPairs: [MappingPair<TypeA, TypeB>] = []
+    var mappingPairs: [MappingPair<TypeA, TypeB>] = []
     
     public typealias KeyPathA<TypeAProperty> = WritableKeyPath<TypeA, TypeAProperty>
     public typealias KeyPathB<TypeBProperty> = WritableKeyPath<TypeB, TypeBProperty>
@@ -24,42 +24,44 @@ public struct KeyPathMapper<TypeA, TypeB> {
             mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
+    public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ aKeyPath: KeyPathA<TypeAProperty>,
+                                                                                          to bKeyPath: KeyPathB<TypeBProperty>,
+                                                                                          with transformer: Transformer)
+        where Transformer.TypeB == TypeAProperty, Transformer.TypeA == TypeBProperty {
+            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+    }
+    
+    public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ bKeyPath: KeyPathB<TypeBProperty>,
+                                                                                          to aKeyPath: KeyPathA<TypeAProperty>,
+                                                                                          with transformer: Transformer)
+        where Transformer.TypeB == TypeAProperty, Transformer.TypeA == TypeBProperty {
+            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+    }
+    
+    public mutating func map<TypeProperty, Transformer: MapperTransfomer>(_ aKeyPath: KeyPathA<TypeProperty>,
+                                                                          to bKeyPath: KeyPathB<TypeProperty>,
+                                                                          with transformer: Transformer)
+        where Transformer.TypeA == TypeProperty, Transformer.TypeB == TypeProperty {
+            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+    }
+    
+    public mutating func map<TypeProperty, Transformer: MapperTransfomer>(_ bKeyPath: KeyPathB<TypeProperty>,
+                                                                          to aKeyPath: KeyPathA<TypeProperty>,
+                                                                          with transformer: Transformer)
+        where Transformer.TypeB == TypeProperty, Transformer.TypeA == TypeProperty {
+            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+    }
+    
     // MARK: - Empty map
     
     public mutating func map<TypeProperty>(_ aKeyPath: KeyPathA<TypeProperty>,
                                            to bKeyPath: KeyPathB<TypeProperty>) {
-        mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: EmptyMapperTransformer<TypeProperty>()))
+        map(aKeyPath, to: bKeyPath, with: EmptyMapperTransformer<TypeProperty>())
     }
     
     public mutating func map<TypeProperty>(_ bKeyPath: KeyPathB<TypeProperty>,
                                            to aKeyPath: KeyPathA<TypeProperty>) {
-        mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: EmptyMapperTransformer<TypeProperty>()))
-    }
-    
-    // MARK: - Optional map
-    
-    public mutating func map<TypeProperty>(_ aKeyPath: KeyPathA<TypeProperty>,
-                                           to bKeyPath: KeyPathB<Optional<TypeProperty>>,
-                                           fallbackValue: TypeProperty) {
-        mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: OptionalEmptyMapperTransformer(fallbackValue: fallbackValue)))
-    }
-    
-    public mutating func map<TypeProperty>(_ aKeyPath: KeyPathA<Optional<TypeProperty>>,
-                                           to bKeyPath: KeyPathB<TypeProperty>,
-                                           fallbackValue: TypeProperty) {
-        mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: OptionalEmptyMapperTransformer(fallbackValue: fallbackValue)))
-    }
-    
-    public mutating func map<TypeProperty>(_ bKeyPath: KeyPathB<Optional<TypeProperty>>,
-                                           to aKeyPath: KeyPathA<TypeProperty>,
-                                           fallbackValue: TypeProperty) {
-        mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: OptionalEmptyMapperTransformer(fallbackValue: fallbackValue)))
-    }
-    
-    public mutating func map<TypeProperty>(_ bKeyPath: KeyPathB<TypeProperty>,
-                                           to aKeyPath: KeyPathA<Optional<TypeProperty>>,
-                                           fallbackValue: TypeProperty) {
-        mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: OptionalEmptyMapperTransformer(fallbackValue: fallbackValue)))
+        map(aKeyPath, to: bKeyPath, with: EmptyMapperTransformer<TypeProperty>())
     }
     
     // MARK: - Update

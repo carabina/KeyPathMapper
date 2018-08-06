@@ -29,6 +29,14 @@ extension TypeA: MappableInitializable {
     }
 }
 
+class TypeC {
+    var value: String = ""
+}
+
+class TypeD: NSObject {
+    @objc dynamic var value: String = ""
+}
+
 final class KeyPathMapperTests: XCTestCase {
     
     var mapper: KeyPathMapper<TypeA, TypeB> {
@@ -74,6 +82,22 @@ final class KeyPathMapperTests: XCTestCase {
         XCTAssertEqual(updated.name, b.name)
         XCTAssertEqual(updated.age, 0)
         XCTAssertEqual(updated.submodel.value, b.submodel.value)
+    }
+    
+    func testObserve_C_mapTo_D() {
+        let c = TypeC()
+        let d = TypeD()
+        
+        var mapper = KeyPathMapper<TypeD, TypeC>()
+        mapper.map(\TypeD.value, to: \TypeC.value)
+        
+        var observation: KeyPathObservation? = mapper.observe(object: d, mapInto: c)
+        
+        d.value = "Foo"
+        
+        XCTAssertEqual(c.value, d.value)
+        
+        observation = nil
     }
 
     static var allTests = [
