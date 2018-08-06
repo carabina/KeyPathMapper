@@ -1,5 +1,6 @@
 import Foundation
 
+/// Transformer applied on mapping KeyPath's value from one type to another.
 public protocol MapperTransfomer {
     associatedtype TypeA
     associatedtype TypeB

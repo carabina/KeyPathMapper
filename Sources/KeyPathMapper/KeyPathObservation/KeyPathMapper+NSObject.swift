@@ -1,6 +1,13 @@
 import Foundation
 
 extension KeyPathMapper where TypeA: NSObject, TypeB: AnyObject {
+    
+    /// Observe changes in A for all registered KeyPaths and map them to B
+    ///
+    /// - Parameters:
+    ///   - object: object to observe for changes
+    ///   - updatingObject: object to update
+    /// - Returns: KeyPathObservation, container for NSKeyValueObservation
     func observe(object: TypeA, mapInto updatingObject: TypeB) -> KeyPathObservation {
         let observation = KeyPathObservation()
         mappingPairs.forEach { mappingKey in
@@ -9,14 +16,22 @@ extension KeyPathMapper where TypeA: NSObject, TypeB: AnyObject {
         return observation
     }
     
-    public mutating func map<TypeProperty>(_ aKeyPath: ReferenceWritableKeyPath<TypeA, TypeProperty>,
-                                           to bKeyPath: ReferenceWritableKeyPath<TypeB, TypeProperty>) {
-        mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: EmptyMapperTransformer<TypeProperty>()))
-    }
+}
+
+extension KeyPathMapper where TypeA: AnyObject, TypeB: NSObject {
     
-    public mutating func map<TypeProperty>(_ bKeyPath: ReferenceWritableKeyPath<TypeB, TypeProperty>,
-                                           to aKeyPath: ReferenceWritableKeyPath<TypeA, TypeProperty>) {
-        mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: EmptyMapperTransformer<TypeProperty>()))
+    /// Observe changes in B for all registered KeyPaths and map them to A
+    ///
+    /// - Parameters:
+    ///   - object: object to observe for changes
+    ///   - updatingObject: object to update
+    /// - Returns: KeyPathObservation, container for NSKeyValueObservation
+    func observe(object: TypeA, mapInto updatingObject: TypeB) -> KeyPathObservation {
+        let observation = KeyPathObservation()
+        mappingPairs.forEach { mappingKey in
+            mappingKey.observe(object: object, mapInto: updatingObject).dispose(with: observation)
+        }
+        return observation
     }
     
 }

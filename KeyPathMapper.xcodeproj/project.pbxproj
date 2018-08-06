@@ -26,6 +26,8 @@
 		3F4312AC21183C3A00F779CA /* KeyPathObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4312AB21183C3A00F779CA /* KeyPathObservation.swift */; };
 		3F4312AE21183CC000F779CA /* KeyPathMapper+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4312AD21183CC000F779CA /* KeyPathMapper+Optional.swift */; };
 		3F4312B021184DCE00F779CA /* UpdateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4312AF21184DCE00F779CA /* UpdateFunctions.swift */; };
+		3F4312BA2118764D00F779CA /* KeyPathMapper+EmptyMapperTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4312B92118764D00F779CA /* KeyPathMapper+EmptyMapperTransformer.swift */; };
+		3F4312BC21187BF300F779CA /* KeyPathMapper+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4312BB21187BF300F779CA /* KeyPathMapper+Mapping.swift */; };
 		3F68099821130F1F00FF58CE /* MapperTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68099721130F1F00FF58CE /* MapperTransformer.swift */; };
 		3F68099A21130F3A00FF58CE /* EmptyMapperTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68099921130F3A00FF58CE /* EmptyMapperTransformer.swift */; };
 		3F68099C21130F6600FF58CE /* MappingPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68099B21130F6600FF58CE /* MappingPair.swift */; };
@@ -62,6 +64,8 @@
 		3F4312AB21183C3A00F779CA /* KeyPathObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPathObservation.swift; sourceTree = "<group>"; };
 		3F4312AD21183CC000F779CA /* KeyPathMapper+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyPathMapper+Optional.swift"; sourceTree = "<group>"; };
 		3F4312AF21184DCE00F779CA /* UpdateFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFunctions.swift; sourceTree = "<group>"; };
+		3F4312B92118764D00F779CA /* KeyPathMapper+EmptyMapperTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyPathMapper+EmptyMapperTransformer.swift"; sourceTree = "<group>"; };
+		3F4312BB21187BF300F779CA /* KeyPathMapper+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyPathMapper+Mapping.swift"; sourceTree = "<group>"; };
 		3F68099721130F1F00FF58CE /* MapperTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapperTransformer.swift; sourceTree = "<group>"; };
 		3F68099921130F3A00FF58CE /* EmptyMapperTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMapperTransformer.swift; sourceTree = "<group>"; };
 		3F68099B21130F6600FF58CE /* MappingPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappingPair.swift; sourceTree = "<group>"; };
@@ -166,11 +170,13 @@
 			children = (
 				3F4312AA21183C1900F779CA /* KeyPathObservation */,
 				3F68099621130F0900FF58CE /* MapperTransformers */,
-				3F6809A121134EB600FF58CE /* KeyPathMapper+MappableInitializable.swift */,
-				3F68099B21130F6600FF58CE /* MappingPair.swift */,
 				3F4312AF21184DCE00F779CA /* UpdateFunctions.swift */,
+				3F68099B21130F6600FF58CE /* MappingPair.swift */,
 				OBJ_9 /* KeyPathMapper.swift */,
+				3F4312B92118764D00F779CA /* KeyPathMapper+EmptyMapperTransformer.swift */,
 				3F4312AD21183CC000F779CA /* KeyPathMapper+Optional.swift */,
+				3F4312BB21187BF300F779CA /* KeyPathMapper+Mapping.swift */,
+				3F6809A121134EB600FF58CE /* KeyPathMapper+MappableInitializable.swift */,
 			);
 			name = KeyPathMapper;
 			path = Sources/KeyPathMapper;
@@ -261,6 +267,8 @@
 			files = (
 				3F6809A221134EB600FF58CE /* KeyPathMapper+MappableInitializable.swift in Sources */,
 				3F68099C21130F6600FF58CE /* MappingPair.swift in Sources */,
+				3F4312BC21187BF300F779CA /* KeyPathMapper+Mapping.swift in Sources */,
+				3F4312BA2118764D00F779CA /* KeyPathMapper+EmptyMapperTransformer.swift in Sources */,
 				3F4312AE21183CC000F779CA /* KeyPathMapper+Optional.swift in Sources */,
 				3F68099A21130F3A00FF58CE /* EmptyMapperTransformer.swift in Sources */,
 				3F68099821130F1F00FF58CE /* MapperTransformer.swift in Sources */,

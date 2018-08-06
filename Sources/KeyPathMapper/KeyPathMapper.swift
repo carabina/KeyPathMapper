@@ -1,83 +1,48 @@
-        import Foundation
+import Foundation
 
+/// KeyPathMapper is a generic type which provides property mapping based on instances KeyPaths.
 public struct KeyPathMapper<TypeA, TypeB> {
     var mappingPairs: [MappingPair<TypeA, TypeB>] = []
     
     public typealias KeyPathA<TypeAProperty> = WritableKeyPath<TypeA, TypeAProperty>
     public typealias KeyPathB<TypeBProperty> = WritableKeyPath<TypeB, TypeBProperty>
     
+    public typealias ReferenceKeyPathA<TypeAProperty> = ReferenceWritableKeyPath<TypeA, TypeAProperty>
+    public typealias ReferenceKeyPathB<TypeBProperty> = ReferenceWritableKeyPath<TypeB, TypeBProperty>
+    
     public init() {}
-    
-    // MARK: - Transformer map
-    
-    public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ aKeyPath: KeyPathA<TypeAProperty>,
-                                                                                          to bKeyPath: KeyPathB<TypeBProperty>,
-                                                                                          with transformer: Transformer)
-        where Transformer.TypeA == TypeAProperty, Transformer.TypeB == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
-    }
-    
-    public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ bKeyPath: KeyPathB<TypeBProperty>,
-                                                                                          to aKeyPath: KeyPathA<TypeAProperty>,
-                                                                                          with transformer: Transformer)
-        where Transformer.TypeA == TypeAProperty, Transformer.TypeB == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
-    }
-    
-    public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ aKeyPath: KeyPathA<TypeAProperty>,
-                                                                                          to bKeyPath: KeyPathB<TypeBProperty>,
-                                                                                          with transformer: Transformer)
-        where Transformer.TypeB == TypeAProperty, Transformer.TypeA == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
-    }
-    
-    public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ bKeyPath: KeyPathB<TypeBProperty>,
-                                                                                          to aKeyPath: KeyPathA<TypeAProperty>,
-                                                                                          with transformer: Transformer)
-        where Transformer.TypeB == TypeAProperty, Transformer.TypeA == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
-    }
-    
-    public mutating func map<TypeProperty, Transformer: MapperTransfomer>(_ aKeyPath: KeyPathA<TypeProperty>,
-                                                                          to bKeyPath: KeyPathB<TypeProperty>,
-                                                                          with transformer: Transformer)
-        where Transformer.TypeA == TypeProperty, Transformer.TypeB == TypeProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
-    }
-    
-    public mutating func map<TypeProperty, Transformer: MapperTransfomer>(_ bKeyPath: KeyPathB<TypeProperty>,
-                                                                          to aKeyPath: KeyPathA<TypeProperty>,
-                                                                          with transformer: Transformer)
-        where Transformer.TypeB == TypeProperty, Transformer.TypeA == TypeProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
-    }
-    
-    // MARK: - Empty map
-    
-    public mutating func map<TypeProperty>(_ aKeyPath: KeyPathA<TypeProperty>,
-                                           to bKeyPath: KeyPathB<TypeProperty>) {
-        map(aKeyPath, to: bKeyPath, with: EmptyMapperTransformer<TypeProperty>())
-    }
-    
-    public mutating func map<TypeProperty>(_ bKeyPath: KeyPathB<TypeProperty>,
-                                           to aKeyPath: KeyPathA<TypeProperty>) {
-        map(aKeyPath, to: bKeyPath, with: EmptyMapperTransformer<TypeProperty>())
-    }
     
     // MARK: - Update
     
+    /// Update instance A from mappable instance B
+    ///
+    /// - Parameters:
+    ///   - value: instance to update
+    ///   - from: instance to update from
     public func update(value: inout TypeA, from: TypeB) {
         mappingPairs.forEach { mappingPair in
             mappingPair.update(value: &value, from: from)
         }
     }
     
+    /// Update instance B from mappable instance A
+    ///
+    /// - Parameters:
+    ///   - value: instance to update
+    ///   - from: instance to update from
     public func update(value: inout TypeB, from: TypeA) {
         mappingPairs.forEach { mappingPair in
             mappingPair.update(value: &value, from: from)
         }
     }
     
+    
+    /// Update instance A from mappable instance B
+    ///
+    /// - Parameters:
+    ///   - value: instance to update
+    ///   - from: instance to update from
+    /// - Returns: New instance A with updated values.
     public func updated(value: TypeA, from: TypeB) -> TypeA {
         var updatingValue = value
         mappingPairs.forEach { mappingPair in
@@ -86,6 +51,12 @@ public struct KeyPathMapper<TypeA, TypeB> {
         return updatingValue
     }
     
+    /// Update instance B from mappable instance A
+    ///
+    /// - Parameters:
+    ///   - value: instance to update
+    ///   - from: instance to update from
+    /// - Returns: New instance B with updated values
     public func updated(value: TypeB, from: TypeA) -> TypeB {
         var updatingValue = value
         mappingPairs.forEach { mappingPair in

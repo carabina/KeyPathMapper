@@ -99,6 +99,23 @@ final class KeyPathMapperTests: XCTestCase {
         
         observation = nil
     }
+    
+    func testObserve_C_mapTo_D_deallocated() {
+        let c = TypeC()
+        let d = TypeD()
+        
+        var mapper = KeyPathMapper<TypeD, TypeC>()
+        mapper.map(\TypeD.value, to: \TypeC.value)
+        
+        var observation: KeyPathObservation? = mapper.observe(object: d, mapInto: c)
+        
+        d.value = "Foo"
+        observation = nil
+        d.value = "Boo"
+        
+        XCTAssertEqual(c.value, "Foo")
+        XCTAssertEqual(d.value, "Boo")
+    }
 
     static var allTests = [
         ("testMap_A_to_B", testMap_A_to_B, "testMap_B_to_A", testMap_B_to_A),

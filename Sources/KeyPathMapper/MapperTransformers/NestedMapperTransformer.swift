@@ -1,5 +1,6 @@
 import Foundation
 
+/// Transformer applied for nested types, on mapping KeyPath of one type to another.
 public struct NestedMapperTransformer<MappingTypeA, MappingTypeATypeB>: MapperTransfomer {
     public typealias TypeA = MappingTypeA
     public typealias TypeB = MappingTypeATypeB
