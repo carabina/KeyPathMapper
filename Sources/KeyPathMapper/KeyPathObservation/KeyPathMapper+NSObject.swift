@@ -8,7 +8,7 @@ extension KeyPathMapper where TypeA: NSObject, TypeB: AnyObject {
     ///   - object: object to observe for changes
     ///   - updatingObject: object to update
     /// - Returns: KeyPathObservation, container for NSKeyValueObservation
-    func observe(object: TypeA, mapInto updatingObject: TypeB) -> KeyPathObservation {
+    public func observe(object: TypeA, mapInto updatingObject: TypeB) -> KeyPathObservation {
         let observation = KeyPathObservation()
         mappingPairs.forEach { mappingKey in
             mappingKey.observe(object: object, mapInto: updatingObject).dispose(with: observation)
@@ -26,7 +26,7 @@ extension KeyPathMapper where TypeA: AnyObject, TypeB: NSObject {
     ///   - object: object to observe for changes
     ///   - updatingObject: object to update
     /// - Returns: KeyPathObservation, container for NSKeyValueObservation
-    func observe(object: TypeA, mapInto updatingObject: TypeB) -> KeyPathObservation {
+    public func observe(object: TypeA, mapInto updatingObject: TypeB) -> KeyPathObservation {
         let observation = KeyPathObservation()
         mappingPairs.forEach { mappingKey in
             mappingKey.observe(object: object, mapInto: updatingObject).dispose(with: observation)

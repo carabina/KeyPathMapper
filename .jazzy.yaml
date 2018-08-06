@@ -1,0 +1,19 @@
+module: KeyPathMapper
+custom_categories:
+  - name: KeyPathMapper
+    children: 
+    - KeyPathMapper
+  - name: Mapper Transformers
+    children:
+    - MapperTransfomer
+    - NestedMapperTransformer
+  - name: Mappable Initializable
+    children:
+    - MappableInitializable
+
+theme: apple  
+skip_undocumented: true
+readme: README.md
+hide_documentation_coverage: true
+author: Evghenii Nicolaev
+github_url: https://github.com/marshallxxx/KeyPathMapper

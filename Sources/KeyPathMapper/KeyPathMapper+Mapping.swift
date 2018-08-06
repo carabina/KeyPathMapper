@@ -81,14 +81,9 @@ extension KeyPathMapper {
     }
 }
 
+/// :nodoc:
 extension KeyPathMapper where TypeA: NSObject, TypeB: AnyObject {
     
-    /// Map between KeyPath of type A to KeyPath of type B
-    ///
-    /// - Parameters:
-    ///   - aKeyPath: KeyPath of type A
-    ///   - bKeyPath: KeyPath of type B
-    ///   - transformer: Transformer applied on values from KeyPaths when mapping from A to B and vice-versa.
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ aKeyPath: ReferenceKeyPathA<TypeAProperty>,
                                                                                           to bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           with transformer: Transformer)
@@ -96,12 +91,6 @@ extension KeyPathMapper where TypeA: NSObject, TypeB: AnyObject {
             mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
-    /// Map between KeyPath of type B to KeyPath of type A
-    ///
-    /// - Parameters:
-    ///   - aKeyPath: KeyPath of type B
-    ///   - bKeyPath: KeyPath of type A
-    ///   - transformer: Transformer applied on values from KeyPaths when mapping from A to B and vice-versa.
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           to aKeyPath: ReferenceKeyPathA<TypeAProperty>,
                                                                                           with transformer: Transformer)
@@ -109,12 +98,6 @@ extension KeyPathMapper where TypeA: NSObject, TypeB: AnyObject {
             mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
-    /// Map between KeyPath of type A to KeyPath of type B
-    ///
-    /// - Parameters:
-    ///   - aKeyPath: KeyPath of type A
-    ///   - bKeyPath: KeyPath of type B
-    ///   - transformer: Transformer applied on values from KeyPaths when mapping from A to B and vice-versa.
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ aKeyPath: ReferenceKeyPathA<TypeAProperty>,
                                                                                           to bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           with transformer: Transformer)
@@ -122,12 +105,6 @@ extension KeyPathMapper where TypeA: NSObject, TypeB: AnyObject {
             mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
-    /// Map between KeyPath of type B to KeyPath of type A
-    ///
-    /// - Parameters:
-    ///   - aKeyPath: KeyPath of type B
-    ///   - bKeyPath: KeyPath of type A
-    ///   - transformer: Transformer applied on values from KeyPaths when mapping from A to B and vice-versa.
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           to aKeyPath: ReferenceKeyPathA<TypeAProperty>,
                                                                                           with transformer: Transformer)
@@ -135,12 +112,6 @@ extension KeyPathMapper where TypeA: NSObject, TypeB: AnyObject {
             mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
-    /// Map between KeyPath of type A to KeyPath of type B
-    ///
-    /// - Parameters:
-    ///   - aKeyPath: KeyPath of type A
-    ///   - bKeyPath: KeyPath of type B
-    ///   - transformer: Transformer applied on values from KeyPaths when mapping from A to B and vice-versa.
     public mutating func map<TypeProperty, Transformer: MapperTransfomer>(_ aKeyPath: ReferenceKeyPathA<TypeProperty>,
                                                                           to bKeyPath: ReferenceKeyPathB<TypeProperty>,
                                                                           with transformer: Transformer)
@@ -148,12 +119,6 @@ extension KeyPathMapper where TypeA: NSObject, TypeB: AnyObject {
             mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
-    /// Map between KeyPath of type B to KeyPath of type A
-    ///
-    /// - Parameters:
-    ///   - aKeyPath: KeyPath of type B
-    ///   - bKeyPath: KeyPath of type A
-    ///   - transformer: Transformer applied on values from KeyPaths when mapping from A to B and vice-versa.
     public mutating func map<TypeProperty, Transformer: MapperTransfomer>(_ bKeyPath: ReferenceKeyPathB<TypeProperty>,
                                                                           to aKeyPath: ReferenceKeyPathA<TypeProperty>,
                                                                           with transformer: Transformer)
@@ -163,14 +128,9 @@ extension KeyPathMapper where TypeA: NSObject, TypeB: AnyObject {
     
 }
 
+/// :nodoc:
 extension KeyPathMapper where TypeA: AnyObject, TypeB: NSObject {
     
-    /// Map between KeyPath of type A to KeyPath of type B
-    ///
-    /// - Parameters:
-    ///   - aKeyPath: KeyPath of type A
-    ///   - bKeyPath: KeyPath of type B
-    ///   - transformer: Transformer applied on values from KeyPaths when mapping from A to B and vice-versa.
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ aKeyPath: ReferenceKeyPathA<TypeAProperty>,
                                                                                           to bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           with transformer: Transformer)
@@ -178,12 +138,6 @@ extension KeyPathMapper where TypeA: AnyObject, TypeB: NSObject {
             mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
-    /// Map between KeyPath of type B to KeyPath of type A
-    ///
-    /// - Parameters:
-    ///   - aKeyPath: KeyPath of type B
-    ///   - bKeyPath: KeyPath of type A
-    ///   - transformer: Transformer applied on values from KeyPaths when mapping from A to B and vice-versa.
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           to aKeyPath: ReferenceKeyPathA<TypeAProperty>,
                                                                                           with transformer: Transformer)
@@ -191,12 +145,6 @@ extension KeyPathMapper where TypeA: AnyObject, TypeB: NSObject {
             mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
-    /// Map between KeyPath of type A to KeyPath of type B
-    ///
-    /// - Parameters:
-    ///   - aKeyPath: KeyPath of type A
-    ///   - bKeyPath: KeyPath of type B
-    ///   - transformer: Transformer applied on values from KeyPaths when mapping from A to B and vice-versa.
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ aKeyPath: ReferenceKeyPathA<TypeAProperty>,
                                                                                           to bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           with transformer: Transformer)
@@ -204,12 +152,6 @@ extension KeyPathMapper where TypeA: AnyObject, TypeB: NSObject {
             mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
-    /// Map between KeyPath of type B to KeyPath of type A
-    ///
-    /// - Parameters:
-    ///   - aKeyPath: KeyPath of type B
-    ///   - bKeyPath: KeyPath of type A
-    ///   - transformer: Transformer applied on values from KeyPaths when mapping from A to B and vice-versa.
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           to aKeyPath: ReferenceKeyPathA<TypeAProperty>,
                                                                                           with transformer: Transformer)
@@ -217,12 +159,6 @@ extension KeyPathMapper where TypeA: AnyObject, TypeB: NSObject {
             mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
-    /// Map between KeyPath of type A to KeyPath of type B
-    ///
-    /// - Parameters:
-    ///   - aKeyPath: KeyPath of type A
-    ///   - bKeyPath: KeyPath of type B
-    ///   - transformer: Transformer applied on values from KeyPaths when mapping from A to B and vice-versa.
     public mutating func map<TypeProperty, Transformer: MapperTransfomer>(_ aKeyPath: ReferenceKeyPathA<TypeProperty>,
                                                                           to bKeyPath: ReferenceKeyPathB<TypeProperty>,
                                                                           with transformer: Transformer)
@@ -230,12 +166,6 @@ extension KeyPathMapper where TypeA: AnyObject, TypeB: NSObject {
             mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
-    /// Map between KeyPath of type B to KeyPath of type A
-    ///
-    /// - Parameters:
-    ///   - aKeyPath: KeyPath of type B
-    ///   - bKeyPath: KeyPath of type A
-    ///   - transformer: Transformer applied on values from KeyPaths when mapping from A to B and vice-versa.
     public mutating func map<TypeProperty, Transformer: MapperTransfomer>(_ bKeyPath: ReferenceKeyPathB<TypeProperty>,
                                                                           to aKeyPath: ReferenceKeyPathA<TypeProperty>,
                                                                           with transformer: Transformer)

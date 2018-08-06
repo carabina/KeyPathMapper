@@ -4,10 +4,13 @@ import Foundation
 public struct KeyPathMapper<TypeA, TypeB> {
     var mappingPairs: [MappingPair<TypeA, TypeB>] = []
     
+    /// :nodoc:
     public typealias KeyPathA<TypeAProperty> = WritableKeyPath<TypeA, TypeAProperty>
+    /// :nodoc:
     public typealias KeyPathB<TypeBProperty> = WritableKeyPath<TypeB, TypeBProperty>
-    
+    /// :nodoc:
     public typealias ReferenceKeyPathA<TypeAProperty> = ReferenceWritableKeyPath<TypeA, TypeAProperty>
+    /// :nodoc:
     public typealias ReferenceKeyPathB<TypeBProperty> = ReferenceWritableKeyPath<TypeB, TypeBProperty>
     
     public init() {}
