@@ -34,6 +34,7 @@
 		3F68099E2113103700FF58CE /* OptionalEmptyMapperTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68099D2113103700FF58CE /* OptionalEmptyMapperTransformer.swift */; };
 		3F6809A02113117C00FF58CE /* NestedMapperTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68099F2113117C00FF58CE /* NestedMapperTransformer.swift */; };
 		3F6809A221134EB600FF58CE /* KeyPathMapper+MappableInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6809A121134EB600FF58CE /* KeyPathMapper+MappableInitializable.swift */; };
+		3FA971AC2119CFBE00E29413 /* ObserveFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA971AB2119CFBE00E29413 /* ObserveFunctions.swift */; };
 		OBJ_22 /* KeyPathMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* KeyPathMapper.swift */; };
 		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_40 /* KeyPathMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* KeyPathMapperTests.swift */; };
@@ -72,6 +73,7 @@
 		3F68099D2113103700FF58CE /* OptionalEmptyMapperTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalEmptyMapperTransformer.swift; sourceTree = "<group>"; };
 		3F68099F2113117C00FF58CE /* NestedMapperTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedMapperTransformer.swift; sourceTree = "<group>"; };
 		3F6809A121134EB600FF58CE /* KeyPathMapper+MappableInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyPathMapper+MappableInitializable.swift"; sourceTree = "<group>"; };
+		3FA971AB2119CFBE00E29413 /* ObserveFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveFunctions.swift; sourceTree = "<group>"; };
 		"KeyPathMapper::KeyPathMapper::Product" /* KeyPathMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeyPathMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"KeyPathMapper::KeyPathMapperTests::Product" /* KeyPathMapperTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = KeyPathMapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_12 /* KeyPathMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPathMapperTests.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				3F4312A621183BB200F779CA /* KeyPathMapper+NSObject.swift */,
 				3F4312A821183BFF00F779CA /* MappingPair+NSObject.swift */,
 				3F4312AB21183C3A00F779CA /* KeyPathObservation.swift */,
+				3FA971AB2119CFBE00E29413 /* ObserveFunctions.swift */,
 			);
 			path = KeyPathObservation;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				3F68099A21130F3A00FF58CE /* EmptyMapperTransformer.swift in Sources */,
 				3F68099821130F1F00FF58CE /* MapperTransformer.swift in Sources */,
 				3F4312A921183BFF00F779CA /* MappingPair+NSObject.swift in Sources */,
+				3FA971AC2119CFBE00E29413 /* ObserveFunctions.swift in Sources */,
 				3F4312B021184DCE00F779CA /* UpdateFunctions.swift in Sources */,
 				3F68099E2113103700FF58CE /* OptionalEmptyMapperTransformer.swift in Sources */,
 				3F4312A721183BB200F779CA /* KeyPathMapper+NSObject.swift in Sources */,
@@ -334,7 +338,7 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = KeyPathMapper;
 			};
