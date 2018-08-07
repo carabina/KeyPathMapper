@@ -1,0 +1,9 @@
+osx_image: xcode9.3
+language: swift
+before_install:
+  - brew update
+  - gem install cocoapods
+script:
+- swift test
+- pod repo update
+- pod lib lint --verbose
