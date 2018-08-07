@@ -1,6 +1,37 @@
 # KeyPathMapper
 
+[![Build Status](https://travis-ci.org/marshallxxx/KeyPathMapper.svg?branch=master)](https://travis-ci.org/marshallxxx/KeyPathMapper)
+![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-333333.svg)
+![pod](https://img.shields.io/cocoapods/v/KeyPathMapper.svg)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
+
 **KeyPathMapper** is a thin library based on swift `#KeyPath` feature which facilitates mapping between two different models.
+
+## Installation
+
+### CocoaPods
+
+`pod "KeyPathMapper"`
+
+### Swift Package Manager
+
+Create a file `Package.swift`
+
+```swift
+// swift-tools-version:4.0
+
+import PackageDescription
+
+let package = Package(
+    name: "YourProject",
+    dependencies: [
+        .package(url: "https://github.com/marshallxxx/KeyPathMapper.git", "1.0.0" ..< "2.0.0")
+    ],
+    targets: [
+        .target(name: "YourProject", dependencies: ["KeyPathMapper"])
+    ]
+)
+```
 
 
 ## How to use?
