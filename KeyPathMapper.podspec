@@ -9,7 +9,7 @@ KeyPathMapper is a thin library based on swift #KeyPath feature which facilitate
   s.license          = 'MIT'
   s.author           = { 'Evghenii Nicolaev' => 'nicolaevevghenii@gmail.com' }
   s.social_media_url = 'https://twitter.com/ENicolaev'
-  s.source           = { :git => "https://github.com/marshallxxx/KeyPathMapper", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/marshallxxx/KeyPathMapper.git", :tag => s.version.to_s }
   s.requires_arc          = true
   s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.9'

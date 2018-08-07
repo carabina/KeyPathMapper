@@ -12,7 +12,7 @@ extension KeyPathMapper {
                                                                                           to bKeyPath: KeyPathB<TypeBProperty>,
                                                                                           with transformer: Transformer)
         where Transformer.TypeA == TypeAProperty, Transformer.TypeB == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     /// Map between KeyPath of type B to KeyPath of type A
@@ -25,7 +25,7 @@ extension KeyPathMapper {
                                                                                           to aKeyPath: KeyPathA<TypeAProperty>,
                                                                                           with transformer: Transformer)
         where Transformer.TypeA == TypeAProperty, Transformer.TypeB == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     /// Map between KeyPath of type A to KeyPath of type B
@@ -38,7 +38,7 @@ extension KeyPathMapper {
                                                                                           to bKeyPath: KeyPathB<TypeBProperty>,
                                                                                           with transformer: Transformer)
         where Transformer.TypeB == TypeAProperty, Transformer.TypeA == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     /// Map between KeyPath of type B to KeyPath of type A
@@ -51,7 +51,7 @@ extension KeyPathMapper {
                                                                                           to aKeyPath: KeyPathA<TypeAProperty>,
                                                                                           with transformer: Transformer)
         where Transformer.TypeB == TypeAProperty, Transformer.TypeA == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     /// Map between KeyPath of type A to KeyPath of type B
@@ -64,7 +64,7 @@ extension KeyPathMapper {
                                                                           to bKeyPath: KeyPathB<TypeProperty>,
                                                                           with transformer: Transformer)
         where Transformer.TypeA == TypeProperty, Transformer.TypeB == TypeProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     /// Map between KeyPath of type B to KeyPath of type A
@@ -77,7 +77,7 @@ extension KeyPathMapper {
                                                                           to aKeyPath: KeyPathA<TypeProperty>,
                                                                           with transformer: Transformer)
         where Transformer.TypeB == TypeProperty, Transformer.TypeA == TypeProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.init(aKeyPath, bKeyPath, transformer: transformer))
     }
 }
 
@@ -88,42 +88,42 @@ extension KeyPathMapper where TypeA: NSObject, TypeB: AnyObject {
                                                                                           to bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           with transformer: Transformer)
         where Transformer.TypeA == TypeAProperty, Transformer.TypeB == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.observableMappingPair(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           to aKeyPath: ReferenceKeyPathA<TypeAProperty>,
                                                                                           with transformer: Transformer)
         where Transformer.TypeA == TypeAProperty, Transformer.TypeB == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.observableMappingPair(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ aKeyPath: ReferenceKeyPathA<TypeAProperty>,
                                                                                           to bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           with transformer: Transformer)
         where Transformer.TypeB == TypeAProperty, Transformer.TypeA == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.observableMappingPair(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           to aKeyPath: ReferenceKeyPathA<TypeAProperty>,
                                                                                           with transformer: Transformer)
         where Transformer.TypeB == TypeAProperty, Transformer.TypeA == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.observableMappingPair(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     public mutating func map<TypeProperty, Transformer: MapperTransfomer>(_ aKeyPath: ReferenceKeyPathA<TypeProperty>,
                                                                           to bKeyPath: ReferenceKeyPathB<TypeProperty>,
                                                                           with transformer: Transformer)
         where Transformer.TypeA == TypeProperty, Transformer.TypeB == TypeProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.observableMappingPair(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     public mutating func map<TypeProperty, Transformer: MapperTransfomer>(_ bKeyPath: ReferenceKeyPathB<TypeProperty>,
                                                                           to aKeyPath: ReferenceKeyPathA<TypeProperty>,
                                                                           with transformer: Transformer)
         where Transformer.TypeB == TypeProperty, Transformer.TypeA == TypeProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.observableMappingPair(aKeyPath, bKeyPath, transformer: transformer))
     }
     
 }
@@ -135,42 +135,42 @@ extension KeyPathMapper where TypeA: AnyObject, TypeB: NSObject {
                                                                                           to bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           with transformer: Transformer)
         where Transformer.TypeA == TypeAProperty, Transformer.TypeB == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           to aKeyPath: ReferenceKeyPathA<TypeAProperty>,
                                                                                           with transformer: Transformer)
         where Transformer.TypeA == TypeAProperty, Transformer.TypeB == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ aKeyPath: ReferenceKeyPathA<TypeAProperty>,
                                                                                           to bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           with transformer: Transformer)
         where Transformer.TypeB == TypeAProperty, Transformer.TypeA == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     public mutating func map<TypeAProperty, TypeBProperty, Transformer: MapperTransfomer>(_ bKeyPath: ReferenceKeyPathB<TypeBProperty>,
                                                                                           to aKeyPath: ReferenceKeyPathA<TypeAProperty>,
                                                                                           with transformer: Transformer)
         where Transformer.TypeB == TypeAProperty, Transformer.TypeA == TypeBProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     public mutating func map<TypeProperty, Transformer: MapperTransfomer>(_ aKeyPath: ReferenceKeyPathA<TypeProperty>,
                                                                           to bKeyPath: ReferenceKeyPathB<TypeProperty>,
                                                                           with transformer: Transformer)
         where Transformer.TypeA == TypeProperty, Transformer.TypeB == TypeProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
     public mutating func map<TypeProperty, Transformer: MapperTransfomer>(_ bKeyPath: ReferenceKeyPathB<TypeProperty>,
                                                                           to aKeyPath: ReferenceKeyPathA<TypeProperty>,
                                                                           with transformer: Transformer)
         where Transformer.TypeB == TypeProperty, Transformer.TypeA == TypeProperty {
-            mappingPairs.append(MappingPair.init(aKeyPath, bKeyPath, transformer: transformer))
+            mappingPairs.append(MappingPair<TypeA, TypeB>.init(aKeyPath, bKeyPath, transformer: transformer))
     }
     
 }
