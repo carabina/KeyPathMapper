@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "KeyPathMapper"
-  s.version          = "1.0.0"
+  s.version          = "1.1.0"
   s.summary          = "KeyPathMapper facilitates mapping between models"
   s.description      = <<-DESC
 KeyPathMapper is a thin library based on swift #KeyPath feature which facilitates mapping between two different models.
