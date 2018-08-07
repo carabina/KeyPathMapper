@@ -35,6 +35,8 @@
 		3F6809A02113117C00FF58CE /* NestedMapperTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68099F2113117C00FF58CE /* NestedMapperTransformer.swift */; };
 		3F6809A221134EB600FF58CE /* KeyPathMapper+MappableInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6809A121134EB600FF58CE /* KeyPathMapper+MappableInitializable.swift */; };
 		3FA971AC2119CFBE00E29413 /* ObserveFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA971AB2119CFBE00E29413 /* ObserveFunctions.swift */; };
+		3FA971AE2119D1F400E29413 /* ClosureBasedMapperTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA971AD2119D1F400E29413 /* ClosureBasedMapperTransformer.swift */; };
+		3FA971B02119D3B600E29413 /* KeyPathMapper+ClosureMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA971AF2119D3B600E29413 /* KeyPathMapper+ClosureMapping.swift */; };
 		OBJ_22 /* KeyPathMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* KeyPathMapper.swift */; };
 		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_40 /* KeyPathMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* KeyPathMapperTests.swift */; };
@@ -74,6 +76,8 @@
 		3F68099F2113117C00FF58CE /* NestedMapperTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedMapperTransformer.swift; sourceTree = "<group>"; };
 		3F6809A121134EB600FF58CE /* KeyPathMapper+MappableInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyPathMapper+MappableInitializable.swift"; sourceTree = "<group>"; };
 		3FA971AB2119CFBE00E29413 /* ObserveFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveFunctions.swift; sourceTree = "<group>"; };
+		3FA971AD2119D1F400E29413 /* ClosureBasedMapperTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureBasedMapperTransformer.swift; sourceTree = "<group>"; };
+		3FA971AF2119D3B600E29413 /* KeyPathMapper+ClosureMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyPathMapper+ClosureMapping.swift"; sourceTree = "<group>"; };
 		"KeyPathMapper::KeyPathMapper::Product" /* KeyPathMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeyPathMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"KeyPathMapper::KeyPathMapperTests::Product" /* KeyPathMapperTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = KeyPathMapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_12 /* KeyPathMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPathMapperTests.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 				3F68099921130F3A00FF58CE /* EmptyMapperTransformer.swift */,
 				3F68099D2113103700FF58CE /* OptionalEmptyMapperTransformer.swift */,
 				3F68099F2113117C00FF58CE /* NestedMapperTransformer.swift */,
+				3FA971AD2119D1F400E29413 /* ClosureBasedMapperTransformer.swift */,
 			);
 			path = MapperTransformers;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 				3F4312AD21183CC000F779CA /* KeyPathMapper+Optional.swift */,
 				3F4312BB21187BF300F779CA /* KeyPathMapper+Mapping.swift */,
 				3F6809A121134EB600FF58CE /* KeyPathMapper+MappableInitializable.swift */,
+				3FA971AF2119D3B600E29413 /* KeyPathMapper+ClosureMapping.swift */,
 			);
 			name = KeyPathMapper;
 			path = Sources/KeyPathMapper;
@@ -270,6 +276,8 @@
 			files = (
 				3F6809A221134EB600FF58CE /* KeyPathMapper+MappableInitializable.swift in Sources */,
 				3F68099C21130F6600FF58CE /* MappingPair.swift in Sources */,
+				3FA971AE2119D1F400E29413 /* ClosureBasedMapperTransformer.swift in Sources */,
+				3FA971B02119D3B600E29413 /* KeyPathMapper+ClosureMapping.swift in Sources */,
 				3F4312BC21187BF300F779CA /* KeyPathMapper+Mapping.swift in Sources */,
 				3F4312BA2118764D00F779CA /* KeyPathMapper+EmptyMapperTransformer.swift in Sources */,
 				3F4312AE21183CC000F779CA /* KeyPathMapper+Optional.swift in Sources */,

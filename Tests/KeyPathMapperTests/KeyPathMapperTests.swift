@@ -116,6 +116,25 @@ final class KeyPathMapperTests: XCTestCase {
         XCTAssertEqual(c.value, "Foo")
         XCTAssertEqual(d.value, "Boo")
     }
+    
+    func testClosureTransformer() {
+        var mapper = KeyPathMapper<TypeD, TypeC>()
+        mapper.map(\TypeC.value, to: \TypeD.value, propertyMap: { (typeCValue, typeDValue) in
+            return typeDValue + "!"
+        }, oppositePropertyMap: { (typeDValue, typeCValue) in
+            return typeCValue + "?"
+        })
+        
+        var c = TypeC()
+        var d = TypeD()
+        d.value = "Foo"
+        
+        mapper.update(value: &c, from: d)
+        mapper.update(value: &d, from: c)
+        
+        XCTAssertEqual(c.value, "Foo!")
+        XCTAssertEqual(d.value, "Foo!?")
+    }
 
     static var allTests = [
         ("testMap_A_to_B", testMap_A_to_B, "testMap_B_to_A", testMap_B_to_A),

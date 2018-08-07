@@ -1,8 +1,8 @@
 import Foundation
 
 struct OptionalEmptyMapperTransformer<MappingType>: MapperTransfomer {
-    public typealias TypeA = MappingType
-    public typealias TypeB = Optional<MappingType>
+    typealias TypeA = MappingType
+    typealias TypeB = Optional<MappingType>
     
     private var fallbackValue: MappingType
     

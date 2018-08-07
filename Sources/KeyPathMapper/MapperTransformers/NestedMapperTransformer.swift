@@ -1,9 +1,9 @@
 import Foundation
 
 /// Transformer applied for nested types, on mapping KeyPath of one type to another.
-public struct NestedMapperTransformer<MappingTypeA, MappingTypeATypeB>: MapperTransfomer {
+public struct NestedMapperTransformer<MappingTypeA, MappingTypeB>: MapperTransfomer {
     public typealias TypeA = MappingTypeA
-    public typealias TypeB = MappingTypeATypeB
+    public typealias TypeB = MappingTypeB
     
     private let keyPathMapper: KeyPathMapper<TypeA, TypeB>
     
